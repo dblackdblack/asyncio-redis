@@ -67,7 +67,7 @@ connection.
     @asyncio.coroutine
     def example():
         # Create Redis connection
-        connection = yield from asyncio_redis.Connection.create(host='localhost', port=6379)
+        connection = yield from asyncio_redis.Connection.create(host='127.0.0.1', port=6379)
 
         # Set a key
         yield from connection.set('my_key', 'my_value')
@@ -96,7 +96,7 @@ connection will be used for new commands.
     @asyncio.coroutine
     def example():
         # Create Redis connection
-        connection = yield from asyncio_redis.Pool.create(host='localhost', port=6379, poolsize=10)
+        connection = yield from asyncio_redis.Pool.create(host='127.0.0.1', port=6379, poolsize=10)
 
         # Set a key
         yield from connection.set('my_key', 'my_value')
@@ -116,7 +116,7 @@ Transactions example
     @asyncio.coroutine
     def example():
         # Create Redis connection
-        connection = yield from asyncio_redis.Pool.create(host='localhost', port=6379, poolsize=10)
+        connection = yield from asyncio_redis.Pool.create(host='127.0.0.1', port=6379, poolsize=10)
 
         # Create transaction
         transaction = yield from connection.multi()
@@ -150,7 +150,7 @@ Pubsub example
     @asyncio.coroutine
     def example():
         # Create connection
-        connection = yield from asyncio_redis.Connection.create(host='localhost', port=6379)
+        connection = yield from asyncio_redis.Connection.create(host='127.0.0.1', port=6379)
 
         # Create subscriber.
         subscriber = yield from connection.start_subscribe()
@@ -184,7 +184,7 @@ LUA Scripting example
 
     @asyncio.coroutine
     def example():
-        connection = yield from asyncio_redis.Connection.create(host='localhost', port=6379)
+        connection = yield from asyncio_redis.Connection.create(host='127.0.0.1', port=6379)
 
         # Set a key
         yield from connection.set('my_key', '2')
@@ -215,7 +215,7 @@ Example using the Protocol class
 
         # Create Redis connection
         transport, protocol = yield from loop.create_connection(
-                    asyncio_redis.RedisProtocol, 'localhost', 6379)
+                    asyncio_redis.RedisProtocol, '127.0.0.1', 6379)
 
         # Set a key
         yield from protocol.set('my_key', 'my_value')
